@@ -4,53 +4,55 @@
         <div class='title'>DOCTORS LIST</div>
         <div class='underline'></div>
       </div>
-  
     </header>
     <div class="specialization-detail-wrapper">
       <div class="specialization-types">
-        <ejs-dropdownlist id='Specialization' #specializationObj [dataSource]='specializationData'
-          [showClearButton]='true' (change)='onSpecializationChange($event)' [fields]='fields'
-          placeholder='Select a Specialization' popupWidth='100%' popupHeight='230px'>
-          <ng-template #itemTemplate let-data>
-            <div class="specialist-value">
-              <span class="{{data.Id}}" [style.background]="getColor(data)"></span>
-              <span class="name">{{data.Text}}</span>
-            </div>
-          </ng-template>
-          <ng-template #valueTemplate let-data>
-            <div class="specialist-value department-value">
-              <span class="{{data.Id}}" [style.background]="getColor(data)"></span>
-              <span class="name">{{data.Text}}</span>
-            </div>
-          </ng-template>
-        </ejs-dropdownlist>
+          <mat-form-field appearance="fill">
+            <mat-label  >Specialite</mat-label>
+            <select formControlName="medSpecialite" matNativeControl required >
+             <!--div (change)='onSpecializationChange($event)'-->
+              <option  value="Dermatologie">Dermatologie</option>
+              <option  value="Pédiatrie">Pédiatrie</option>
+              <option  value="Psychiatrie">Psychiatrie</option>
+              <option  value="Gastro-entérologie">Gastro-entérologie</option>
+              <option  value="Pneumologie">Pneumologie</option>
+              <option  value="Neurologie">Neurologie</option>
+              <option  value="Cardiologie">Cardiologie</option>
+              <option  value="Endocrinologie">Endocrinologie</option>
+             <!--/div-->
+            </select>
+          </mat-form-field>
       </div>
-      <div #specialistItemObj class='specialist-display'>
-        <div (click)='onSpecialistClick($event)' *ngFor="let data of filteredDoctors">
-          <div class="e-cards specialist-item" id=Specialist_{{data.Id}}>
+      <div class="patient-display">
+        <ejs-grid #gridObj [dataSource]='medecindata' [editSettings]='editSettings'
+           >
+            <e-columns >
+                <e-column field='medFirstName' width='100' headerText='medFirstName' textAlign='Left'></e-column>
+                <e-column field='medLastName' width='80' textAlign='Left'>
+                    <ng-template #template let-data>
+                        <!--span class="patFirstName" (click)='onPatientClick($event)'>{{data.Name}}</span-->
+                    </ng-template>
+                </e-column>
+                <e-column field='medSpecialite' width='80' headerText='medSpecialite'textAlign='Left'></e-column>
+            </e-columns>
+            </ejs-grid>
+      </div>
+      <!--div #specialistItemObj class='specialist-display'>
+        <div (click)='onSpecialistClick($event)'*ngFor="let m of medecindata">
+          <div class="e-cards specialist-item" >
             <div class="e-card-content">
-              <div class="specialist-image">
-                <img class="profile" src="./assets/images/{{data.Text}}.png" alt="doctor" />
-                <span class='upload icon-upload_photo {{data.NewDoctorClass}}'></span>
-              </div>
             </div>
             <div class="specialist-detail">
-              <div class="name">Dr. {{data.Name}}</div>
-              <div class="education">{{getEducation(data.Education)}}</div>
-              <div class="specialist-experience">
-                <div class="specialization">
-                  <span class="label-text">Designation</span>
-                  <span class="specialization-text">{{data.Designation}}</span>
-                </div>
-                <div class="experience">
-                  <span class="label-text">Experience</span>
-                  <span class="specialization-text">{{data.Experience}}</span>
-                </div>
+            <div class="name">Dr. {{m.medFirstName}}</div>
+            <div class="specialist-experience">
+              <div class="specialization">
+                <span class="label-text">Spécialité</span>
+                <span class="specialization-text">{{m.medSpecialite}}</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </div>
   </div>
   

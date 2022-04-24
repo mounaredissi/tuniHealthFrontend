@@ -7,7 +7,11 @@ import { TimePicker } from '@syncfusion/ej2-angular-calendars';
 import { EJ2Instance } from '@syncfusion/ej2-angular-schedule';
 import { AddEditDoctorComponent } from '../../add-edit-doctor/add-edit-doctor.component';
 import { DataService } from '../../data.service';
-
+//////////////////////////////////
+import { UserService } from '../../Services/user.service';
+import { EditService, PageService, EditSettingsModel, GridComponent, DialogEditEventArgs } from '@syncfusion/ej2-angular-grids';
+import { Medecin } from 'src/app/Medecin';
+/////////////////////////////////
 @Component({
   selector: 'app-pat-doctor-details',
   templateUrl: './pat-doctor-details.component.html',
@@ -27,10 +31,34 @@ export class PatDoctorDetailsComponent implements OnInit {
   public animationSettings: Record<string, any> = { effect: 'None' };
   public breakDays: Record<string, any>[];
   public doctorId: number;
+  public doctors_Data: Medecin[];
+  public doctor_Data:Medecin[] = [] ;
+  public editSettings: EditSettingsModel;
 
-  constructor(public dataService: DataService, public router: Router, private route: ActivatedRoute) {
+  constructor(public dataService: DataService, public router: Router, private route: ActivatedRoute,private userService: UserService) {
     this.doctorData = this.dataService.getDoctorsData();
     this.specializationData = this.dataService.specialistData;
+    this.userService.getAllDoctors().subscribe(
+      (res)=>{
+        console.log("the result",res);
+        console.log(localStorage.getItem('con')); 
+         
+        for(var i=0;i<res.length;i++){
+          this.doctor_Data.push(res[i]);}})
+             
+      // this.patientdata.concat(res);
+       //this.json = res;
+      // this.dataSource.data=res;
+
+            
+    //this.activePatientData = this.filteredPatients;
+    console.log("khra ala rasek",this.doctor_Data)
+    this.editSettings = {
+      allowEditing: true,
+      allowAdding: true,
+      allowDeleting: true,
+      mode: 'Dialog'
+    };
   }
 
   public ngOnInit(): void {

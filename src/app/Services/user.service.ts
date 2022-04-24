@@ -27,6 +27,22 @@ export class UserService {
       headers: this.requestHeader,
     });
   }
+  //////////////////////////////
+  public getAllDoctors(){
+    return this.httpclient.get<Medecin[]>(this.PATH_OF_API+'/getMedecin')
+  }
+  ////////////////////////////
+  public getDoctorsBySpec(medSpecialite:String ){
+    return this.httpclient.get<Medecin[]>(this.PATH_OF_API+'/FindBySpecialite'+medSpecialite)
+  }
+    ////////////////////////////
+    public RegisterNewAppointment(appointmentdatas: any): Observable<any>{
+      console.log(appointmentdatas);
+     return this.httpclient.post(this.PATH_OF_API+'/registerNewConsultation',appointmentdatas,{
+      headers: this.requestHeader,
+    });
+    }
+    ////////////////////////////
   public getAllPatientsForUser(){
     return this.httpclient.get<Patient[]>(this.PATH_OF_API+'/findPatientsByMed/'+localStorage.getItem('con'))
   }
