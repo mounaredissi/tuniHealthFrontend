@@ -14,6 +14,11 @@ import { BookAppointmentComponent } from './components/book-appointment/book-app
 import { LoginComponent } from './components/login/login.component';
 import { PatientHomeComponent } from './components/patient-home/patient-home.component';
 import { MainDoctorComponent } from './main-doctor/main-doctor.component';
+import { PatDoctorsComponent } from './patient-interface/pat-doctors/pat-doctors.component';
+import { PatBookAppointmentComponent } from './patient-interface/book-appointment/book-appointment.component';
+import { PatAppointmentsComponent } from './patient-interface/pat-appointments/pat-appointments.component';
+import { PatDoctorDetailsComponent } from './patient-interface/pat-doctor-details/pat-doctor-details.component';
+import { PatientMainComponent } from './patient-interface/patient-main/patient-main.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -21,7 +26,12 @@ const routes: Routes = [
   {path:'sign-up-patient',component:SignupPatientComponent},
   {path:'bookAppointment',component:BookAppointmentComponent},
   {path:'login',component:LoginComponent},
-  { path: 'app-main-doctor', component: DashboardComponent },
+  { path: 'app-patient-main', component: PatientMainComponent,children: [
+    { path: 'app-pat-book-appointment', component: PatBookAppointmentComponent},
+    { path: 'app-pat-appointments', component: PatAppointmentsComponent },
+    { path: 'app-pat-doctor-details/:id', component: PatDoctorDetailsComponent },
+    { path: 'app-pat-doctors', component: PatDoctorsComponent}]},
+ 
   {path: 'doctors-interface',
   component: MainDoctorComponent,
   children: [{

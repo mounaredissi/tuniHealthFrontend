@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('con',response.user.userName);
         const role = response.user.role[0].roleName;
         if (role === 'Patient') {
-          this.router.navigate(['/patient']);
+          this.router.navigate(['/app-patient-main']);
         } else {
           this.router.navigate(['/doctors-interface']);
         }
