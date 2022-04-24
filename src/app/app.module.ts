@@ -50,6 +50,7 @@ import { PatAppointmentsComponent } from './patient-interface/pat-appointments/p
 import { PatDoctorDetailsComponent } from './patient-interface/pat-doctor-details/pat-doctor-details.component';
 import { PatDoctorsComponent } from './patient-interface/pat-doctors/pat-doctors.component';
 import { PatientMainComponent } from './patient-interface/patient-main/patient-main.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     PatDoctorDetailsComponent,
@@ -112,7 +113,8 @@ import { PatientMainComponent } from './patient-interface/patient-main/patient-m
     DialogModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    NgbModule
   ],
   providers: [CalendarComponent, { provide: APP_BASE_HREF, useValue: '/' }, Location,
     { provide: LocationStrategy, useClass: HashLocationStrategy },AuthGuard,

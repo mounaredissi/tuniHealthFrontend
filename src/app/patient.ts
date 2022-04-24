@@ -1,5 +1,5 @@
 export interface Patient {
-  patName:String;
+    patName:String;
     patFirstName:string;
     patLastName:string;
     date_naiss:Date;

@@ -22,6 +22,8 @@ import { AddEditPatientComponent } from '../add-edit-patient/add-edit-patient.co
 import { AddEditDoctorComponent } from '../add-edit-doctor/add-edit-doctor.component';
 import { CalendarSettings } from '../calendar-settings';
 import { DataService } from '../data.service';
+import { UserService } from '../Services/user.service';
+import { Consultation } from '../Consultation';
 
 L10n.load({
   'en-US': {
@@ -90,13 +92,14 @@ export class CalendarComponent implements OnInit {
   public activeWaitingItem: Record<string, any>[] = [];
   public selectedWaitingItem: Record<string, any>[] = [];
   public comboBox: ComboBox;
+  consultationData:Consultation[]=[]
   public fields: Record<string, any> = { text: 'Name', value: 'Id' };
   public itemTemplate: string = '<div class="specialist-item"><img class="value" src="./assets/images/${Text}.png" alt="doctor"/>' +
     '<div class="doctor-details"><div class="name">Dr.${Name}</div><div class="designation">${Designation}</div></div></div>';
   public footerTemplate = `<div class="add-doctor"><div class="e-icon-add e-icons"></div>
     <div class="add-doctor-text">Add New Doctor</div></div>`;
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService,private UserService :UserService) {
     (QuickPopups.prototype as any).applyFormValidation = () => { };
     (FieldValidator.prototype as any).errorPlacement = this.dataService.errorPlacement;
   }
@@ -107,6 +110,13 @@ export class CalendarComponent implements OnInit {
 
   public ngOnInit(): void {
     this.eventData = this.hospitalData = this.dataService.getHospitalData();
+    this.UserService.getAllConsultationByMed().subscribe( (res)=>{
+      console.log("the result",res);
+      console.log(localStorage.getItem('con')); 
+       for(var i=0;i<res.length;i++){
+         this.consultationData.push(res[i]);
+       }       
+          });
     this.calendarSettings = this.dataService.getCalendarSettings();
     this.eventSettings = {
       dataSource: this.eventData,

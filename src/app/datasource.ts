@@ -1,5 +1,3 @@
-import { Patient } from "./patient";
-
 /* eslint-disable @typescript-eslint/naming-convention */
 export const viewsData: Array<string> = ['Day', 'Week', 'Month'];
 
@@ -643,9 +641,105 @@ export const doctorsData: Record<string, any>[] = [
     }
 ];
 
-export const patientsData: Array<Patient> = [
-    
-       
+export const patientsData: Record<string, any>[] = [
+    {
+        Id: 1,
+        Name: 'Laura',
+        Text: 'Laura',
+        DOB: new Date(1980, 8, 3),
+        Mobile: '(717) 555-4444',
+        Email: 'laura90@mail.com',
+        Address: '507 - 20th Ave. E.\r\nApt. 2A',
+        Disease: 'Eye Checkup',
+        DepartmentName: 'GENERAL',
+        BloodGroup: 'O+',
+        Gender: 'Female',
+        Symptoms: 'Sweating, Chills and Shivering'
+    },
+    {
+        Id: 2,
+        Name: 'Milka',
+        Text: 'Milka',
+        DOB: new Date(2000, 3, 5),
+        Mobile: '(717) 555-4445',
+        Email: 'milka40@sample.com',
+        Address: '908 W. Capital Way',
+        Disease: 'Bone Fracture',
+        DepartmentName: 'ORTHOPEDICS',
+        BloodGroup: 'AB+',
+        Gender: 'Female',
+        Symptoms: 'Swelling or bruising over a bone, Pain in the injured area',
+    },
+    {
+        Id: 3,
+        Name: 'Adams',
+        Text: 'Adams',
+        DOB: new Date(1985, 2, 3),
+        Mobile: '(717) 555-4454',
+        Email: 'adams89@rpy.com',
+        Address: '722 Moss Bay Blvd.',
+        Disease: 'Eye and Spectactles',
+        DepartmentName: 'GENERAL',
+        BloodGroup: 'B+',
+        Gender: 'Male',
+        Symptoms: 'Frequent squinting, Eye fatigue or strain',
+    },
+    {
+        Id: 4,
+        Name: 'Janet',
+        Text: 'Janet',
+        DOB: new Date(2000, 7, 3),
+        Mobile: '(717) 555-4544',
+        Email: 'janet79@rpy.com',
+        Address: '4110 Old Redmond Rd.',
+        Disease: 'Biological Problem',
+        DepartmentName: 'GENERAL',
+        BloodGroup: 'B+',
+        Gender: 'Male',
+        Symptoms: 'Physical aches or pain, Memory difficulties or personality change',
+    },
+    {
+        Id: 5,
+        Name: 'Mercy',
+        Text: 'Mercy',
+        DOB: new Date(2005, 4, 29),
+        Mobile: '(717) 555-5444',
+        Email: 'mercy60@sample.com',
+        Address: '14 Garrett Hill',
+        Disease: 'Skin Hives',
+        DepartmentName: 'DERMATOLOGY',
+        BloodGroup: 'AB-',
+        Gender: 'Female',
+        Symptoms: 'Outbreak of swollen, pale red bumps or plaques'
+    },
+    {
+        Id: 6,
+        Name: 'Richa',
+        Text: 'Richa',
+        DOB: new Date(1989, 10, 29),
+        Mobile: '(206) 555-4444',
+        Email: 'richa46@mail.com',
+        Address: 'Coventry House\r\nMiner Rd.',
+        Disease: 'Arm Fracture',
+        DepartmentName: 'ORTHOPEDICS',
+        BloodGroup: 'B+',
+        Gender: 'Female',
+        Symptoms: 'Swelling, warmth, or redness in the joint',
+    },
+    {
+        Id: 7,
+        Name: 'Maud Oliver',
+        Text: 'MaudOliver',
+        DOB: new Date(1989, 10, 29),
+        Mobile: '(206) 666-4444',
+        Email: 'moud46@rpy.com',
+        Address: 'Coventry House\r\nMiner Rd.',
+        Disease: 'Racing heartbeat',
+        DepartmentName: 'CARDIOLOGY',
+        BloodGroup: 'B+',
+        Gender: 'Male',
+        Symptoms: 'A fluttering in your chest',
+    }
 ];
 
 export const waitingList: Record<string, any>[] = [

@@ -42,11 +42,8 @@ export class PatientsComponent implements OnInit {
         console.log(localStorage.getItem('con')); 
          for(var i=0;i<res.length;i++){
            this.patientdata.push(res[i]);
-         }       
-      // this.patientdata.concat(res);
-       //this.json = res;
-      // this.dataSource.data=res;
-
+         }    
+       
             })
     //this.activePatientData = this.filteredPatients;
     console.log("khra ala rasek",this.patientdata)

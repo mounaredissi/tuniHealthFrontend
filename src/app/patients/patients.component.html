@@ -28,16 +28,16 @@
             <ejs-grid #gridObj [dataSource]='patientdata' [editSettings]='editSettings'
                 (actionComplete)='onDataEdit($event)'>
                 <e-columns *ngFor="let m of patientdata">
-                    <e-column field='patName' width='100' headerText='patName' textAlign='Left'></e-column>
+                    <e-column field='patName' width='100' headerText='patient"s name' textAlign='Left'></e-column>
                     <e-column field='patFirstName' width='80' textAlign='Left'>
                         <ng-template #template let-data>
                             <span class="patFirstName" (click)='onPatientClick($event)'>{{data.Name}}</span>
                         </ng-template>
                     </e-column>
-                    <e-column field='patLastName' width='80' headerText='patLastName'textAlign='Left'></e-column>
-                    <e-column field='date_naiss' headerText='patdate_Naiss' width='80' textAlign='Left'></e-column>
-                    <e-column field='patBlood' width='50'headerText='patBlood' textAlign='Left' ></e-column>
-                    <e-column field='patsexe' headerText='Patsexe' width='80' textAlign='Left'></e-column>
+                    <e-column field='patLastName' width='80' headerText='patient"s lastname'textAlign='Left'></e-column>
+                    <e-column field='date_naiss' headerText='patient"s date of birth' width='80' textAlign='Left'></e-column>
+                    <e-column field='patBlood' width='50'headerText='patient"s blood goup' textAlign='Left' ></e-column>
+                    <e-column field='patsexe' headerText='patient"s gender' width='80' textAlign='Left'></e-column>
                 </e-columns>
                 <ng-template #editSettingsTemplate let-data>
                     <!-- <div class='grid-edit-dialog' *ngFor="let m of patientdata">

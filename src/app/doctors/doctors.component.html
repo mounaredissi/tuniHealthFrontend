@@ -1,4 +1,4 @@
-<div class="doctors-wrapper">
+<!-- <div class="doctors-wrapper">
   <header>
     <div class="module-title">
       <div class='title'>DOCTORS LIST</div>
@@ -58,4 +58,91 @@
     </div>
   </div>
 </div>
-<app-add-edit-doctor #addEditDoctorObj (refreshDoctors)="updateDoctors()"></app-add-edit-doctor>
+<app-add-edit-doctor #addEditDoctorObj (refreshDoctors)="updateDoctors()"></app-add-edit-doctor> -->
+<!-- <ejs-grid [dataSource]='consultation' height='160px' id="GridNewKeywords" allowPaging="true" load="onLoad" actionFailure="actionFailure"
+toolbar="@( new List<object>() {'Add','Edit','Delete','Update','Cancel'})" >
+   <e-columns *ngFor="let m of consultation">
+    <e-column field='date' width='80' textAlign='Left'></e-column>
+    <e-column field='patient.patName' width='120' textAlign='Left'></e-column>
+    <e-column field='patient.patBlood' headerText='Doctor Name' width='150' textAlign='Left'>
+    </e-column>
+
+
+    
+
+ 
+  </e-columns>
+</ejs-grid> -->
+
+
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>temp de debut</th>
+      <th>temp de fin</th>
+      <th>patient's FirstName</th>
+      <th>patient's LastName</th>
+      <th>Appointment's description</th>
+      <th>patient's blood type</th>
+      <th>Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let friend of consultation">
+      <td><span>{{friend.date | date }}</span></td>
+      <td><span>{{friend.t_debut }}</span></td>
+      <td><span>{{friend.t_fin }}</span></td>
+      <td><span>{{friend.patient.patFirstName}}</span></td>
+      <td><span>{{friend.patient.patLastName}}</span></td>
+      <td><span>{{friend.description}}</span></td>
+      <td><span>{{friend.patient.patBlood}}</span></td>
+      <td>
+       
+        <button class="btn btn-sm btn-warning" (click)="openEdit(content,friend)">
+          <i class="fa fa-edit"></i>Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteOnClick(friend.id)">
+          <i class="fa fa-remove"></i>Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-footer">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+        <label for="id">Id</label>
+        <div class="input-group">
+          <input formControlName="id" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Date">Date</label>
+        <div class="input-group">
+          <input formControlName="Date" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="t_debut">t_debut</label>
+        <div class="input-group">
+          <input formControlName="t_debut" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="h">h</label>
+        <div class="input-group">
+          <input formControlName="h" class="form-control">
+        </div>
+      </div>
+      <div class="border text-center"> <button data-dismiss="modal" class="btn btn-info">Save Changes</button> </div>
+    </form>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
