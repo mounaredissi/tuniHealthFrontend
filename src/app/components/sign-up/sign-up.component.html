@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="container">
+    <div class="card" style="padding: 20px;">
+        <form [formGroup]="forms" (ngSubmit)="registerNewMedecin()">
+            <input type="text"
+            
+            name="medName"
+            id="medName"
+            placeholder="Enter your username"
+            class="form-control mb-3"
+            formControlName="medName"
+            >
+
+           
+            <input type="text"
+            name="medFirstName"
+            id="medFirstName"
+            formControlName="medFirstName"
+            placeholder="Enter your medFirstName"
+            class="form-control mb-3"            >
+            <input type="text"
+            name="medLastName"
+            id="medLastName"
+            formControlName="medLastName"
+            placeholder="Enter your medLastName"
+            class="form-control mb-3"
+            >
+              <mat-form-field appearance="fill">
+                <mat-label>Specialite</mat-label>
+                <select formControlName="medSpecialite" matNativeControl required>
+                  <option  value="Dermatologie">Dermatologie</option>
+                  <option  value="Pédiatrie">Pédiatrie</option>
+                  <option  value="Psychiatrie">Psychiatrie</option>
+                  <option  value="Gastro-entérologie">Gastro-entérologie</option>
+                  <option  value="Pneumologie">Pneumologie</option>
+                  <option  value="Neurologie">Neurologie</option>
+                  <option  value="Cardiologie">Cardiologie</option>
+                  <option  value="Endocrinologie">Endocrinologie</option>
+                </select>
+              </mat-form-field>
+            <input type="password"
+            
+            name="medPassword"
+            id="medPassword"
+            placeholder="Enter your medPassword"
+            class="form-control mb-3"
+            formControlName="medPassword"
+
+
+            >
+           
+            <input type="submit"
+           
+            class="btn btn-outline-primary form-control rounded-0">
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

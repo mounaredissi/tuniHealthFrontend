@@ -1,0 +1,46 @@
+<div class="planner-wrapper">
+    <ejs-sidebar #sideBar id="plannerSiderBar" [enableGestures]='false' [showBackdrop]='showBackdrop'
+      [closeOnDocumentClick]='closeOnDocumentClick'>
+      <div class="dock">
+        <div class="info align-center">
+          <div class="image"><img src="./assets/images/Admin.png" /></div>
+          <div class="content nameContent">
+            <p class='name' style="margin-top: 16px;">Jane Doe</p>
+            <p class='user-type'>Patient interface</p>
+          </div>
+        </div>
+        <div class="sidebar-item doctors" routerLink="/app-pat-doctors" (click)="onItemClick($event)">
+          <span class="doctors-image"><span class="icon-doctors item-image"></span></span>
+          <span class="text" title="doctors">Doctors</span>
+        </div>
+        <div class="sidebar-item preference" routerLink="/app-pat-book-appointment" (click)="onItemClick($event)">
+          <span class="preference-image"><span class="icon-preference item-image"></span></span>
+          <span class="text" title="preference">Appointment</span>
+        </div>
+        <div class="sidebar-item patients" routerLink="/app-pat-appointments" (click)="onItemClick($event)">
+          <span class="patients-image"><span class="icon-patients item-image"></span></span>
+          <span class="text" title="patients">Appointments</span>
+        </div>
+        
+      </div>
+    </ejs-sidebar>
+    <main>
+      <div class="planner-header">
+        <div class="side-bar-opener">
+          <span class="open-icon e-icons" (click)='btnClick()'></span>
+        </div>
+        <div class="name-cantainer">
+          <span class="clinic-image icon-logo"></span>
+          <h1 class='clinic-name'> APPOINTMENT PLANNER</h1>
+        </div>
+        <div class='logout-container'>
+          <div class="logout-icon-container"><span class="icon-logout logout-image"></span></div>
+          <span class='logout-name'>Logout</span>
+        </div>
+        <div class="sb-header-item sb-table-cell sb-download-wrapper">
+       
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </main>
+  </div>

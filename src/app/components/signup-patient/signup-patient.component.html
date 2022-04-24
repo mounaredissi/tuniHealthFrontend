@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div class="container">
+    <div class="card" style="padding: 20px;">
+        <form [formGroup]="form" (ngSubmit)="registerNewPatient()" >
+            <input type="text"
+            
+            name="patName"
+            id="patName"
+            placeholder="Enter your username"
+            formControlName="patName"
+            class="form-control mb-3"
+            
+            >
+
+           
+            <input type="text"
+            
+            name="patFirstName"
+            id="patFirstName"
+            formControlName="patFirstName"
+            placeholder="Enter your patFirstName"
+            class="form-control mb-3"
+           
+
+            >
+            <input type="text"
+            
+            name="patLastName"
+            id="patLastName"
+            formControlName="patLastName"
+            placeholder="Enter your patLastName"
+            class="form-control mb-3"
+           
+
+            >
+            <mat-form-field appearance="fill">
+                <mat-label>sexe</mat-label>
+                <select formControlName="patsexe" matNativeControl required>
+                  <option  value="Femme">Femme</option>
+                  <option  value="Homme">Homme</option>
+                </select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>blood groupe</mat-label>
+                <select formControlName="patBlood" matNativeControl required>
+                  <option  value="A+">A+</option>
+                  <option  value="A-">A-</option>
+                  <option  value="B+">B+</option>
+                  <option  value="B-">B-</option>
+                  <option  value="O+">O+</option>
+                  <option  value="O-">O-</option>
+                  <option  value="AB+">AB+</option>
+                  <option  value="AB-">AB-</option>
+                </select>
+              </mat-form-field>
+         
+            <ejs-datepicker [format]="format"
+            #ejDatePicker formControlName="date_naiss" name="datepicker" [placeholder]='placeholder' floatLabelType='Auto'>
+            </ejs-datepicker>
+
+            
+            <input type="password"
+            name="patPassword"
+            patPassword
+            id="patPassword"
+            formControlName="patPassword"
+            placeholder="Enter your patPassword"
+            class="form-control mb-3"
+            >
+            <input type="submit"
+           
+            class="btn btn-outline-primary form-control rounded-0">
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,44 @@
+<div id='patient-wrapper' class="planner-patient-wrapper">
+    <header>
+        <div class="module-title">
+            <div class='title'>Appointments list </div>
+            <div class='underline'></div>
+        </div>
+        <div class='add-patient' (click)="onAddPatient()">
+            <div class="e-icon-add e-icons"></div>
+            <div class="add-patient-label">Add New</div>
+        </div>
+    </header>
+    <div class="patients-detail-wrapper">
+        <div class="patient-operations">
+            <div id='searchTemplate' class='search-wrapper planner-patient-search'>
+                <div class="e-input-group" role="search">
+                    <input id="schedule_searchbar" class="e-input" name="input" type="search"
+                        placeholder="Search Appoinment" (keyup)="patientSearch($event)" />
+                    <span class="e-clear-icon" aria-label="close" role="button"
+                        (click)="patientSearchCleared($event)"></span>
+                    <span id="schedule_searchbutton" class="e-input-group-icon search-icon e-icons" tabindex="-1"
+                        title="Search" aria-label="search"></span>
+                </div>
+            </div>
+    
+        </div>
+        <div class="patient-display">
+            <ejs-grid #gridObj [dataSource]='filteredPatients' [editSettings]='editSettings'
+                (actionComplete)='onDataEdit($event)'>
+                <e-columns>
+                    <e-column field='Id' width='50' headerText='ID' textAlign='Left'></e-column>
+                    <e-column field='Date' width='100' textAlign='Left'>
+                        
+                    </e-column>
+                    <e-column field='patient' width='80' textAlign='Left'></e-column>
+                    <e-column field='medecin' headerText='medecin' width='100' textAlign='Left'></e-column>
+                    <e-column field='Description' width='150' textAlign='Left' clipMode='EllipsisWithTooltip'></e-column>
+                   
+                </e-columns>
+         
+            </ejs-grid>
+        </div>
+    </div>
+</div>
+
