@@ -6,10 +6,10 @@ export interface Consultation
 {
     id:bigint,
     Date: Date,
-    patients:Patient,
+    patient:Patient,
     t_debut:Time,
     t_fin:string,
     medecin:Medecin,
-    h:Time,
+    h:number,
 
 }

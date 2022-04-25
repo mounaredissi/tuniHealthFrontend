@@ -32,15 +32,18 @@ export class UserService {
     return this.httpclient.get<Medecin[]>(this.PATH_OF_API+'/getMedecin')
   }
   ////////////////////////////
-  public getDoctorsBySpec(medSpecialite:String ){
-    return this.httpclient.get<Medecin[]>(this.PATH_OF_API+'/FindBySpecialite'+medSpecialite)
+  public getDoctorsBySpec(medSpecialite:any ){
+    return this.httpclient.get<Medecin[]>(this.PATH_OF_API+'/FindBySpecialite/'+medSpecialite)
   }
     ////////////////////////////
-    public RegisterNewAppointment(appointmentdatas: any): Observable<any>{
+    public RegisterNewAppointment(appointmentdatas: any): any{
       console.log(appointmentdatas);
      return this.httpclient.post(this.PATH_OF_API+'/registerNewConsultation',appointmentdatas,{
       headers: this.requestHeader,
     });
+    }
+    public getAllAppointmentsForPatient(){
+      return this.httpclient.get<Consultation[]>(this.PATH_OF_API+'/findConsultationByIdPat/'+localStorage.getItem('con'))
     }
     ////////////////////////////
   public getAllPatientsForUser(){
@@ -54,6 +57,11 @@ export class UserService {
   }
   public deleteConsultation(id:number){
     return this.httpclient.delete(this.PATH_OF_API+'/deleteCons/'+id) 
+   }
+   public  editConsultation(id:number,consdatas: any): any {
+    return this.httpclient.put(this.PATH_OF_API+'/modifyCons/'+id,consdatas,{
+      headers: this.requestHeader,
+    }) ;
    }
 
   public forUser() {

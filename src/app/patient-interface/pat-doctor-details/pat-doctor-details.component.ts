@@ -52,7 +52,6 @@ export class PatDoctorDetailsComponent implements OnInit {
 
             
     //this.activePatientData = this.filteredPatients;
-    console.log("khra ala rasek",this.doctor_Data)
     this.editSettings = {
       allowEditing: true,
       allowAdding: true,

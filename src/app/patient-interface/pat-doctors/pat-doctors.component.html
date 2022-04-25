@@ -9,18 +9,11 @@
       <div class="specialization-types">
           <mat-form-field appearance="fill">
             <mat-label  >Specialite</mat-label>
-            <select formControlName="medSpecialite" matNativeControl required >
-             <!--div (change)='onSpecializationChange($event)'-->
-              <option  value="Dermatologie">Dermatologie</option>
-              <option  value="Pédiatrie">Pédiatrie</option>
-              <option  value="Psychiatrie">Psychiatrie</option>
-              <option  value="Gastro-entérologie">Gastro-entérologie</option>
-              <option  value="Pneumologie">Pneumologie</option>
-              <option  value="Neurologie">Neurologie</option>
-              <option  value="Cardiologie">Cardiologie</option>
-              <option  value="Endocrinologie">Endocrinologie</option>
-             <!--/div-->
-            </select>
+            <select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
+              <option [value]="item.id" *ngFor="let item of data">
+                  {{item.name}}
+              </option>
+          </select>
           </mat-form-field>
       </div>
       <div class="patient-display">
@@ -28,10 +21,8 @@
            >
             <e-columns >
                 <e-column field='medFirstName' width='100' headerText='medFirstName' textAlign='Left'></e-column>
-                <e-column field='medLastName' width='80' textAlign='Left'>
-                    <ng-template #template let-data>
-                        <!--span class="patFirstName" (click)='onPatientClick($event)'>{{data.Name}}</span-->
-                    </ng-template>
+                <e-column field='medLastName' headerText='medLastName' width='80' textAlign='Left'>
+                    
                 </e-column>
                 <e-column field='medSpecialite' width='80' headerText='medSpecialite'textAlign='Left'></e-column>
             </e-columns>

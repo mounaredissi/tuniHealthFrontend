@@ -116,31 +116,28 @@ toolbar="@( new List<object>() {'Add','Edit','Delete','Update','Cancel'})" >
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-footer">
-    <form [formGroup]="editForm" novalidate>
+    <form [formGroup]="editForm" novalidate (ngSubmit)="saveedit()">
       <div class="form-group">
-        <label for="id">Id</label>
+        <label for="h">patName</label>
         <div class="input-group">
-          <input formControlName="id" class="form-control">
+          <input formControlName="patName" class="form-control">
         </div>
       </div>
       <div class="form-group">
         <label for="Date">Date</label>
         <div class="input-group">
-          <input formControlName="Date" class="form-control">
-        </div>
+          <ejs-datepicker [format]="format"
+          #ejDatePicker formControlName="Date" [placeholder]='placeholder' floatLabelType='Auto'>
+          </ejs-datepicker>        </div>
       </div>
-      <div class="form-group">
-        <label for="t_debut">t_debut</label>
-        <div class="input-group">
-          <input formControlName="t_debut" class="form-control">
-        </div>
-      </div>
+     
       <div class="form-group">
         <label for="h">h</label>
         <div class="input-group">
           <input formControlName="h" class="form-control">
         </div>
       </div>
+      <h4 *ngIf = "message" style="color: red"> {{message}} </h4>
       <div class="border text-center"> <button data-dismiss="modal" class="btn btn-info">Save Changes</button> </div>
     </form>
     <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>

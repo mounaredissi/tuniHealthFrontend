@@ -22,6 +22,8 @@ import { PatientMainComponent } from './patient-interface/patient-main/patient-m
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
+
   {path: 'sign-up', component: SignUpComponent },
   {path:'sign-up-patient',component:SignupPatientComponent},
   {path:'bookAppointment',component:BookAppointmentComponent},

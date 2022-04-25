@@ -13,10 +13,10 @@
               <div class="feature-icon mb-3">
                 <i class="icofont-support text-lg"></i>
               </div>
-               <span class="h3">Hello world</span>
-                <h2 class="text-color mt-3">+84 789 1256 </h2>
+              <span class="h3">Bonjour</span>
+             
             </div>
-        </div>
+        </div>  
   
         <div class="col-lg-8">
              <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
@@ -49,7 +49,7 @@
                       <div class="form-group-2 mb-4">
                           <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
                       </div>
-  
+                      <h4 *ngIf = "message" style="color: red"> {{message}} </h4>
                       <input type="submit" class="btn btn-outline-primary form-control rounded-0">
                     </form>
               </div>

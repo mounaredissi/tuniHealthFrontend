@@ -15,6 +15,8 @@ export class PatBookAppointmentComponent implements OnInit {
   public med: any=[]=[] ;
   public placeholder: String = 'Date ';
   public st:string= localStorage.getItem('con');
+  public message:string;
+public rep : number ;
   constructor(private userService: UserService,private formbuilder: FormBuilder) { }
   form!: FormGroup;
 
@@ -40,8 +42,21 @@ export class PatBookAppointmentComponent implements OnInit {
         medName: this.form.value.medName
       }
     }).subscribe(
-      (response: any) => {
-        console.log(response);
+      (response: number) => {
+        console.log("eeeee" +response);
+        this.rep=response;
+        if (this.rep==1){
+          this.message="Consultation ajoutée avec succès !!";   
+        }
+        if (this.rep==2){
+          this.message="Pas de Consultation le Dimanche !!";   
+        }
+        if (this.rep==3){
+          this.message="Ce medecin a une autre consultation pour cette date !!";   
+        }
+        if (this.rep==4){
+          this.message="Temps de travail de 08:00h à 16:000h !!";   
+        }
       },
       (error: any) => {
         console.log(error);

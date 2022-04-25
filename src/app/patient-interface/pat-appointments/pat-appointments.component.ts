@@ -6,6 +6,9 @@ import { Dialog, DialogComponent } from '@syncfusion/ej2-angular-popups';
 import { Button } from '@syncfusion/ej2-angular-buttons';
 import { EditService, PageService, EditSettingsModel, GridComponent, DialogEditEventArgs } from '@syncfusion/ej2-angular-grids';
 import { DataService } from '../../data.service';
+import { UserService } from '../../Services/user.service';
+import { Consultation } from 'src/app/Consultation';
+
 @Component({
   selector: 'app-pat-appointments',
   templateUrl: './pat-appointments.component.html',
@@ -29,18 +32,34 @@ export class PatAppointmentsComponent implements OnInit {
     public editSettings: EditSettingsModel;
     public gridDialog: Dialog;
     public animationSettings: Record<string, any> = { effect: 'None' };
-  
-    constructor(public dataService: DataService) {
+    public consultation:Consultation[] = [] ;
+    constructor(public dataService: DataService,private userService: UserService) {
       this.patientsData = this.filteredPatients = this.dataService.getPatientsData();
       this.hospitalData = this.dataService.getHospitalData();
       this.doctorsData = this.dataService.getDoctorsData();
       this.activePatientData = this.filteredPatients[0];
+      this.userService.getAllAppointmentsForPatient().subscribe(
+        (res)=>{
+          console.log("the result",res);
+          console.log(localStorage.getItem('con')); 
+           for(var i=0;i<res.length;i++){
+             this.consultation.push(res[i]);
+           }       
+           console.log("the result",this.consultation);
+
+        // this.patientdata.concat(res);
+         //this.json = res;
+        // this.dataSource.data=res;
+  
+              })
+    
       this.editSettings = {
         allowEditing: true,
         allowAdding: true,
         allowDeleting: true,
         mode: 'Dialog'
       };
+      
     }
   
     public ngOnInit(): void {
@@ -171,5 +190,3 @@ export class PatAppointmentsComponent implements OnInit {
       this.gridObj.refresh();
     }
   }
-  
-
